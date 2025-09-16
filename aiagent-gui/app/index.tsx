@@ -15,11 +15,10 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 
-import Config from 'react-native-config';
+// Back end api
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
 
-const API_URL = Config.API_URL || 'http://localhost:8000';
-
-
+// Question/answer entity
 interface QAPair {
   question: string;
   answer: string;
