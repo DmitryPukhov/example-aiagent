@@ -6,7 +6,7 @@
       "request": "launch",
       "type": "reactnative",
       "expoHostType": "lan",
-      "platform": "exponent",
+      "platform": "expoweb",
       "cwd": "${workspaceFolder}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
@@ -17,7 +17,15 @@
       "name": "Attach to packager",
       "request": "attach",
       "type": "reactnative",
-      "cwd": "${workspaceFolder}"
-    }
+      "cwd": "${workspaceFolder}",
+    },
+    {
+      // npx expo start should be already started
+      "name": "Launch Chrome 8081",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8081",
+      "webRoot": "${workspaceFolder}"
+    },
   ]
 }

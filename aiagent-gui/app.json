@@ -8,12 +8,14 @@
     "scheme": "aiagentgui",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "jsEngine": "hermes",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "dmitry.pukhov.aiagentgui",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "jsEngine": "jsc"
     },
     "android": {
       "adaptiveIcon": {
