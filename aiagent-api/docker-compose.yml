@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  aiagent-api:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Forward port 8000 from the container to the host machine
+    volumes:
+      - .:/app            # Sync the current directory with the '/app' folder in the container
+    restart: unless-stopped  # Restart automatically except when explicitly stopped
+    networks:
+      - aiagent           # Define a network for future expansion (e.g., adding databases)
+
+networks:
+  aiagent:
+    driver: bridge        # Use default Docker bridge networking

@@ -1,0 +1,7 @@
+.idea/
+.gigaide/
+.venv
+ssl/
+*.egg-info
+*.lock
+__pycache__/
