@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import {
   Button,
   Card,
@@ -14,6 +14,7 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
+import { styles } from './styles/global_styles';
 
 // Back end api
 const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
@@ -123,45 +124,4 @@ export default function QuestionPage() {
       </Snackbar>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  card: {
-    marginBottom: 16,
-  },
-  title: {
-    marginBottom: 16,
-  },
-  input: {
-    marginBottom: 16,
-  },
-  button: {
-    marginTop: 8,
-    marginBottom: 16,
-  },
-  historyContainer: {
-    flex: 1,
-    marginTop: 8,
-  },
-  qaCard: {
-    marginBottom: 12,
-    backgroundColor: 'white',
-  },
-  questionText: {
-    fontSize: 16,
-    color: '#333',
-    marginBottom: 8,
-  },
-  answerText: {
-    fontSize: 16,
-    color: '#555',
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-});
+};
