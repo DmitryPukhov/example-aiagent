@@ -1,35 +1,9 @@
 {
-  "expo": {
-    "name": "aiagent-gui",
-    "slug": "aiagent-gui",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "aiagentgui",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "jsEngine": "hermes",
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "dmitry.pukhov.aiagentgui",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      },
-      "jsEngine": "jsc"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "package": "dmitry.pukhov.aiagentgui"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
+  "name": "reactnative1",
+  "slug": "reactnative1",
+  "android": {
+    "package": "com.dmitry.pukhov.reactnative1"
+  },
     "plugins": [
       "expo-router",
       [
@@ -41,17 +15,10 @@
           "backgroundColor": "#ffffff"
         }
       ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "sdkVersion": "54.0.0",
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "f074d4e5-0575-4823-afe0-215e8c0f0d93"
-      }
+    ],  
+  "extra": {
+    "eas": {
+      "projectId": "8d39697f-4aa0-4e44-9f14-325787b368ac"
     }
-  },
-  "name": "aiagent-gui"
+  }
 }
