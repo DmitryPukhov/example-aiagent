@@ -1,8 +1,8 @@
 {
-  "name": "reactnative1",
-  "slug": "reactnative1",
+  "name": "aiagent-gui",
+  "slug": "aiagent-gui",
   "android": {
-    "package": "com.dmitry.pukhov.reactnative1"
+    "package": "com.dmitry.pukhov.aiagentgui"
   },
     "plugins": [
       "expo-router",
@@ -18,7 +18,7 @@
     ],  
   "extra": {
     "eas": {
-      "projectId": "8d39697f-4aa0-4e44-9f14-325787b368ac"
+      "projectId": "f074d4e5-0575-4823-afe0-215e8c0f0d93"
     }
   }
 }
