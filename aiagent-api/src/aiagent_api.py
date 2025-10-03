@@ -16,7 +16,8 @@ logging.Logger.root.setLevel(logging.INFO)
 ################################################
 
 API_TOKEN = os.getenv("API_TOKEN", None)
-app = FastAPI()
+DEV_MODE = os.getenv("DEV_MODE", "False").lower() == "true"
+app = FastAPI() if DEV_MODE else FastAPI(docs_url=None, redoc_url=None)
 security = HTTPBearer()
 app.add_middleware(
     CORSMiddleware,
@@ -39,12 +40,6 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
 ################################################
 
 aiagent_service = AIAgentService()
-
-
-@app.get("/hello")
-async def hello():
-    """ Smoke test """
-    return "Hello World!"
 
 @app.post("/ask")
 async def ask_question(data: dict, token: str = Depends(verify_token)):
