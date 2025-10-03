@@ -18,6 +18,8 @@ import { styles } from './styles/global_styles';
 
 // Back end api
 const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
+const API_TOKEN = process.env.EXPO_PUBLIC_API_TOKEN || '';
+
 
 // Question/answer entity
 interface QAPair {
@@ -48,8 +50,11 @@ export default function QuestionPage() {
     try {
       const response = await axios.post(`${API_URL}/ask`, {
         question: question
-      });
-      
+      }, {
+        headers: {
+          'Authorization': `Bearer ${API_TOKEN}`
+        }
+      });      
       // Add new Q&A pair to history
       const newPair = {
         question: question,
