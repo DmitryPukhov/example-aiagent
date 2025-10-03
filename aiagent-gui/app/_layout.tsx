@@ -1,14 +1,26 @@
 import { Stack } from "expo-router";
-import { Image, Text, View } from 'react-native'; // Import Image
+import { Image, Text, View } from 'react-native';
+import { MD3LightTheme, PaperProvider } from 'react-native-paper'; // Import PaperProvider
 
-// 1. Define your custom header component
+// 1. Define your custom theme
+const customTheme = {
+  ...MD3LightTheme,
+  colors: {
+    ...MD3LightTheme.colors,
+    primary: 'hsla(33, 53%, 28%, 1.00)', // Your brand's primary color
+    secondary: 'rgba(206, 215, 236, 1)', // Your brand's secondary color
+  },
+  roundness: 4, // Adjust the roundness of components
+};
+
+// 2. Your custom header component (keep your existing code)
 function LogoTitle() {
   return (
     <View style={{ 
       flexDirection: 'row', 
-      justifyContent: 'space-between', // Pushes items to opposite ends
+      justifyContent: 'space-between',
       alignItems: 'center',
-      width: '100%' // Important: takes full width of header
+      width: '100%'
     }}>
       <Image
         style={{ 
@@ -21,35 +33,30 @@ function LogoTitle() {
       <Text style={{ 
         fontSize: 18, 
         fontWeight: 'bold',
-        flex: 1, // Takes available space, pushing image to right
+        flex: 1,
         textAlign: 'left'
       }}>
         Mecanicien
       </Text>
-
-
-
     </View>
   );
 }
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen 
-        name="index"
-        options={{
-          title: "Mecanicien",
-
-          // 2. Set your custom component as the header title
-          headerTitle: (props) => <LogoTitle {...props} />,
- // Add this to remove default header padding:
-          // headerTitleContainerStyle: {
-          //   width: '100%', // Force full width
-          // },
-          headerTitleAlign: 'left', // This helps with full width layout          
-        }}  
-      />    
-    </Stack>
+    // 3. Wrap your entire app with PaperProvider and pass the custom theme
+    <PaperProvider theme={customTheme}>
+      <Stack>
+        <Stack.Screen 
+          name="index"
+          options={{
+            title: "Mecanicien",
+            headerTitle: (props) => <LogoTitle {...props} />,
+            headerTitleAlign: 'left',
+          }}  
+        />
+        {/* Add more Stack.Screen components here for other pages */}
+      </Stack>
+    </PaperProvider>
   );
 }
