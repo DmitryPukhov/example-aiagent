@@ -10,7 +10,6 @@ class AIAgentService:
         # Any free model for test
         # available models are here
         # https://openrouter.ai/api/v1/models
-        #self.model = "openrouter/horizon-beta"
         self.model = os.environ["OPENAI_MODEL"]
 
         logging.info(f"Created AIAgentService with model: {self.model} and API key: ***{self.api_key[-3:]}")

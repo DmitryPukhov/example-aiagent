@@ -14,10 +14,11 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
-import { styles } from './styles/global_styles';
+import { styles } from '@/app/styles/global_styles';
 
 // Back end api
 const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
+console.log('API_URL:', API_URL);
 const API_TOKEN = process.env.EXPO_PUBLIC_API_TOKEN || '';
 
 
@@ -37,8 +38,13 @@ export default function QuestionPage() {
   const [visibleSnackbar, setVisibleSnackbar] = useState(false);
   const [nextId, setNextId] = useState(1);
 
+  ////////////////////////////////////////
+  // On submit
+  ////////////////////////////////////////
   const handleSubmit = async () => {
+
     if (!question.trim()) {
+      // Empty question, ask user to enter something and return
       setError("S'il vous plaît poser une question");
       setVisibleSnackbar(true);
       return;
@@ -48,30 +54,37 @@ export default function QuestionPage() {
     setError('');
     
     try {
+
+      // Send question to backend
       const response = await axios.post(`${API_URL}/ask`, {
         question: question
       }, {
         headers: {
-          'Authorization': `Bearer ${API_TOKEN}`
+          'x-api-token': `${API_TOKEN}`
         }
       });      
+
       // Add new Q&A pair to history
       const newPair = {
         question: question,
         answer: response.data.answer,
         id: nextId
       };
-      
       setQaHistory(prev => [newPair, ...prev]); // Newest first
       setNextId(nextId + 1);
       setQuestion(''); // Clear input after submission
+
     } catch (err) {
-      setError(err.response?.data?.message || "Erreur lors de l'obtention d'une réponse");
+      setError(err.response?.data?.message || "Erreur " + err.response.status + " lors de l'obtention d'une réponse");
       setVisibleSnackbar(true);
     } finally {
       setLoading(false);
     }
   };
+
+  ////////////////////////////////////////
+  // Render
+  ////////////////////////////////////////
 
   return (
     <View style={styles.container}>
