@@ -14,7 +14,7 @@ function LogoTitle() {
         style={{ 
           width: 70, 
           height: 70, 
-          margin: 30
+          margin: 10
         }}
         source={require('@/assets/images/auto1.png')}
       />
